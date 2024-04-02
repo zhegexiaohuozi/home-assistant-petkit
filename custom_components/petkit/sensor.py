@@ -99,7 +99,7 @@ async def async_setup_entry(
             ))
 
         # D4s Feeder
-        if feeder_data.type == 'd4s':
+        if feeder_data.type in ['d4s', 'd4sh']:
             sensors.extend((
                 TimesEaten(coordinator, feeder_id),
                 TimesDispensed(coordinator, feeder_id),

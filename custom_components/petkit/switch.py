@@ -46,7 +46,7 @@ async def async_setup_entry(
         ))
 
         # D4 and D4s Feeder
-        if feeder_data.type in ['d4', 'd4s']:
+        if feeder_data.type in ['d4', 'd4s', 'd4sh']:
             switches.extend((
                 ShortageAlarm(coordinator, feeder_id),
                 DispenseTone(coordinator, feeder_id),
