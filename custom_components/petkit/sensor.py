@@ -1258,7 +1258,7 @@ class TimesEaten(CoordinatorEntity, SensorEntity):
     def native_value(self) -> int:
         """Return total times eaten."""
 
-        if self.feeder_data.type == 'd4s':
+        if self.feeder_data.type in ['d4s', 'd4sh']:
             return self.feeder_data.data['state']['feedState']['eatCount']
         else:
             return len(self.feeder_data.data['state']['feedState']['eatTimes'])

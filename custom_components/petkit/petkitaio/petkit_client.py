@@ -959,7 +959,7 @@ class PetKitClient:
         else:
             url = f'{self.base_url}/{feeder.type}{Endpoint.CANCEL_FEED}'
         header = await self.create_header()
-        if feeder.type == 'd4s':
+        if feeder.type in ['d4s', 'd4sh']:
             if feeder.last_manual_feed_id is None:
                 raise PetKitError('Unable to cancel manual feeding. No valid last manual feeding ID found.')
             else:
@@ -1013,7 +1013,7 @@ class PetKitClient:
         the food state (empty/not empty) won't change until the next scheduled or manual feeding.
         """
 
-        if feeder.type != 'd4s':
+        if feeder.type not in ['d4s', 'd4sh']:
             raise PetKitError('The food_replenished method is only used with D4s (Gemini) feeders.')
         else:
             url = f'{self.base_url}/{feeder.type}{Endpoint.REPLENISHED_FOOD}'

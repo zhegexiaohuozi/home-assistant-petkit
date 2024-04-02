@@ -760,7 +760,7 @@ class DispenseTone(CoordinatorEntity, SwitchEntity):
     def is_on(self) -> bool:
         """Determine if food dispense tone is on."""
 
-        if self.feeder_data.type == 'd4s':
+        if self.feeder_data.type in ['d4s', 'd4sh']:
             return self.feeder_data.data['settings']['feedTone'] == 1
         else:
             return self.feeder_data.data['settings']['feedSound'] == 1
@@ -777,13 +777,13 @@ class DispenseTone(CoordinatorEntity, SwitchEntity):
     async def async_turn_on(self, **kwargs) -> None:
         """Turn dispense tone on."""
 
-        if self.feeder_data.type == 'd4s':
+        if self.feeder_data.type in ['d4s', 'd4sh']:
             setting = FeederSetting.FEED_TONE
         else:
             setting = FeederSetting.DISPENSE_TONE
         await self.coordinator.client.update_feeder_settings(self.feeder_data, setting, 1)
 
-        if self.feeder_data.type == 'd4s':
+        if self.feeder_data.type in ['d4s', 'd4sh']:
             self.feeder_data.data['settings']['feedTone'] = 1
         else:
             self.feeder_data.data['settings']['feedSound'] = 1
@@ -793,13 +793,13 @@ class DispenseTone(CoordinatorEntity, SwitchEntity):
     async def async_turn_off(self, **kwargs) -> None:
         """Turn dispense tone off."""
 
-        if self.feeder_data.type == 'd4s':
+        if self.feeder_data.type in ['d4s', 'd4sh']:
             setting = FeederSetting.FEED_TONE
         else:
             setting = FeederSetting.DISPENSE_TONE
         await self.coordinator.client.update_feeder_settings(self.feeder_data, setting, 0)
 
-        if self.feeder_data.type == 'd4s':
+        if self.feeder_data.type in ['d4s', 'd4sh']:
             self.feeder_data.data['settings']['feedTone'] = 0
         else:
             self.feeder_data.data['settings']['feedSound'] = 0
