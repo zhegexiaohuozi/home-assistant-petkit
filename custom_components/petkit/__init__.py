@@ -1,6 +1,8 @@
 """PetKit Component."""
 from __future__ import annotations
 
+
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD
 from homeassistant.core import HomeAssistant
@@ -9,7 +11,14 @@ from .const import DOMAIN, LOGGER, PETKIT_COORDINATOR, PLATFORMS, POLLING_INTERV
 from .coordinator import PetKitDataUpdateCoordinator
 from .util import async_validate_api, NoDevicesError
 
-
+import os
+import sys
+current_dir = os.getcwd()
+target_dir = os.path.join(current_dir, 'petkitaio')
+sys.path.append(current_dir)
+sys.path.append(target_dir)
+sys.path.append("/config/custom_components/petkit/")
+sys.path.append("/config/custom_components/petkit/petkitaio")
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up PetKit from a config entry."""
 

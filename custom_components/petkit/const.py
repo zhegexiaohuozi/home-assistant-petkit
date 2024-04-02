@@ -3,6 +3,15 @@
 import asyncio
 import logging
 
+import os
+import sys
+current_dir = os.getcwd()
+target_dir = os.path.join(current_dir, 'petkitaio')
+sys.path.append(current_dir)
+sys.path.append(target_dir)
+sys.path.append("/config/custom_components/petkit/")
+sys.path.append("/config/custom_components/petkit/petkitaio")
+
 from aiohttp.client_exceptions import ClientConnectionError
 from petkitaio.exceptions import AuthError, PetKitError
 from petkitaio.constants import W5Command, PurifierCommand

@@ -783,7 +783,7 @@ class DispenseTone(CoordinatorEntity, SwitchEntity):
             setting = FeederSetting.DISPENSE_TONE
         await self.coordinator.client.update_feeder_settings(self.feeder_data, setting, 1)
 
-        if self.feeder_data.type in ['d4s', 'd4sh']:
+        if self.feeder_data.type in ['d4s']:
             self.feeder_data.data['settings']['feedTone'] = 1
         else:
             self.feeder_data.data['settings']['feedSound'] = 1
@@ -799,7 +799,7 @@ class DispenseTone(CoordinatorEntity, SwitchEntity):
             setting = FeederSetting.DISPENSE_TONE
         await self.coordinator.client.update_feeder_settings(self.feeder_data, setting, 0)
 
-        if self.feeder_data.type in ['d4s', 'd4sh']:
+        if self.feeder_data.type in ['d4s']:
             self.feeder_data.data['settings']['feedTone'] = 0
         else:
             self.feeder_data.data['settings']['feedSound'] = 0
