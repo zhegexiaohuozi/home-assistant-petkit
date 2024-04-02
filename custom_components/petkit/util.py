@@ -52,7 +52,7 @@ async def async_validate_api(hass: HomeAssistant, email: str, password: str, reg
         raise ConnectionError from err
 
     devices: dict[str, Any] = devices_query['result']['devices']
-
+    LOGGER.info(f"查询到的设备如下 {devices}")
     if not devices:
         LOGGER.error("Could not retrieve any devices from PetKit servers")
         raise NoDevicesError
