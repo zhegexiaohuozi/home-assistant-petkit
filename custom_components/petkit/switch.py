@@ -760,7 +760,7 @@ class DispenseTone(CoordinatorEntity, SwitchEntity):
     def is_on(self) -> bool:
         """Determine if food dispense tone is on."""
 
-        if self.feeder_data.type in ['d4s', 'd4sh']:
+        if self.feeder_data.type in ['d4s']:
             return self.feeder_data.data['settings']['feedTone'] == 1
         else:
             return self.feeder_data.data['settings']['feedSound'] == 1
