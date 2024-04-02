@@ -346,7 +346,7 @@ FEEDERS = {
     'd3': 'Fresh Element Infinity',
     'd4': 'Fresh Element Solo',
     'd4s': 'Fresh Element Gemini',
-    'd4sh': 'Fresh Element Gemini',
+    'd4sh': 'Fresh Element YumShare',
     'feeder': 'Fresh Element',
     'feedermini': 'Fresh Element Mini Pro',
 }
